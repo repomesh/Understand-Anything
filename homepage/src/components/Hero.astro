@@ -46,8 +46,41 @@ const egonexUrl = 'https://egonex.ai';
       </a>
     </div>
 
-    <a href="https://trendshift.io/repositories/23482" target="_blank" rel="noopener noreferrer" class="hero-trendshift anim anim-6">
-      <img src="https://trendshift.io/api/badge/repositories/23482" alt="Understand Anything | Trendshift" width="250" height="55" loading="lazy" />
+    <a
+      href="https://trendshift.io/repositories/23482"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hero-trendshift anim anim-6"
+    >
+      <span class="trend-fallback" aria-hidden="true">
+        <span class="trend-rank">
+          <svg class="trend-laurel trend-laurel-left" viewBox="0 0 22 32" focusable="false">
+            <path d="M17 5C10 10 6 17 7 26" />
+            <path d="M12 9C8 9 6 11 5 14" />
+            <path d="M9 15C5 16 4 18 4 21" />
+            <path d="M9 22C6 23 5 25 6 28" />
+          </svg>
+          <span class="trend-number">1</span>
+          <svg class="trend-laurel" viewBox="0 0 22 32" focusable="false">
+            <path d="M5 5c7 5 11 12 10 21" />
+            <path d="M10 9c4 0 6 2 7 5" />
+            <path d="M13 15c4 1 5 3 5 6" />
+            <path d="M13 22c3 1 4 3 3 6" />
+          </svg>
+        </span>
+        <span class="trend-copy">
+          <span class="trend-kicker">GitHub Trending</span>
+          <span class="trend-title">#1 Repository Of The Day</span>
+        </span>
+      </span>
+      <img
+        src="https://trendshift.io/api/badge/repositories/23482"
+        alt="Understand Anything | Trendshift"
+        width="250"
+        height="55"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      />
     </a>
 
     <a href={egonexUrl} target="_blank" rel="noopener noreferrer" class="hero-company anim anim-6">
@@ -309,12 +342,18 @@ const egonexUrl = 'https://egonex.ai';
   .hero-trendshift {
     margin-top: 1.75rem;
     display: inline-block;
-    line-height: 0;
+    position: relative;
+    width: 250px;
+    height: 55px;
+    line-height: 1;
     transition: transform 0.2s ease, filter 0.2s ease;
   }
 
   .hero-trendshift img {
     display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
     width: 250px;
     height: 55px;
   }
@@ -322,6 +361,78 @@ const egonexUrl = 'https://egonex.ai';
   .hero-trendshift:hover {
     transform: translateY(-2px);
     filter: drop-shadow(0 12px 20px rgba(88, 43, 232, 0.14));
+  }
+
+  .trend-fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.52rem;
+    padding: 0.42rem 0.62rem;
+    border: 1.5px solid var(--accent);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 14px 32px rgba(88, 43, 232, 0.12);
+    color: #4b2a92;
+  }
+
+  .trend-rank {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.12rem;
+    flex: 0 0 auto;
+    color: var(--accent);
+  }
+
+  .trend-number {
+    font-family: var(--font-heading);
+    font-size: 1.22rem;
+    font-weight: 780;
+    letter-spacing: 0;
+  }
+
+  .trend-laurel {
+    width: 14px;
+    height: 23px;
+    overflow: visible;
+  }
+
+  .trend-laurel path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .trend-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.17rem;
+    min-width: 0;
+  }
+
+  .trend-kicker {
+    font-family: var(--font-heading);
+    color: #6d58b5;
+    font-size: 0.5rem;
+    font-weight: 760;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .trend-title {
+    font-family: var(--font-heading);
+    color: #4b2a92;
+    font-size: 0.76rem;
+    font-weight: 780;
+    letter-spacing: 0;
+    white-space: nowrap;
   }
 
   .hero-company {
